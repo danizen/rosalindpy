@@ -1,0 +1,17 @@
+This is the Knuth-Morris-Pratt string matching algorithm.
+Is it possible to do better with genomic data? 
+
+Maybe if we represent base-pairs as 2-bits of information,
+A = 00
+T = 11
+C = 01
+G = 10
+
+Then a sequence to search for, like ATAT, is represented as 00110011
+
+Then a sequence like GATATATGCATATACTT, is represented as 
+
+1000110011...
+
+Depending on the length of the sequence, we may be able to do some
+bin-sorting for partial matches and thus do better than Knuth-Morris-Pratt.
