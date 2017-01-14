@@ -19,6 +19,7 @@ seq2 = f.readline().strip()
 
 assert len(seq1) == len(seq2)
 
+# This is brute force
 count = 0
 for i in range(0, len(seq1)):
     if seq1[i] != seq2[i]:
@@ -34,3 +35,7 @@ print(count)
 # Can we transform this into binary hamming distance.
 
 
+# NOTE 2: Assuming that mutations are rare, then we can divide the sequence
+# into groups, and test recursively which contain mutations.  Ultimately,
+# we have to compare short sequences, but not all of them.  We can use hashes
+# are plain string equality to test sub-sequencies.
