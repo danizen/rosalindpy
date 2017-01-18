@@ -1,20 +1,56 @@
 import argparse
+import numpy as np
 from os.path import basename, dirname, join
 import io
 
+class Allele(object):
+    HOMOZYGOUS = 0
+    HETEROZYGOUS = 1
+    HOMOZYGOUS_RECESSIVE = 2
 
-parser = argparse.ArgumentParser(prog=basename(__file__), description='Fubar')
-parser.add_argument('k', type=int)
-parser.add_argument('m', type=int)
-parser.add_argument('n', type=int)
 
-opts = parser.parse_args()
+    @classmethod
+    def all(cls):
+        return [cls.HOMOZYGOUS, cls.HETEROZYGOUS, cls.HOMOZYGOUS_RECESSIZE]
+        
 
-# k organisms are homozygous for a factor (both chromosomes dominant)
-# m organisms are heterozygous for a factor (chromosomes different)
-# n oragnisms are homozygous recessize for a factor (both chromosomes recessive)
+class Population(object):
 
-print('k = %d, m = %d, n = %d' % (opts.k, opts.m, opts.n))
+    def __init__(self, counts):
+        if len(counts) != 3:
+            raise Exception('expecting just 3 integers')
+        if isinstance(counts, np.ndarray):
+            self.counts = counts
+        else:
+            self.counts = np.array(counts, dtype=np.int64)
+
+    @property
+    def total(self):
+        return self.counts.sum()
+
+    def probability(self, organism_type):
+        return self.counts[organism_type]/self.total
+
+    def take(self, organism_type):
+        assert self.counts[organism_type] > 0
+        newcounts = self.counts.copy()
+        newcounts[organism_type] -= 1
+        return Population(newcounts)
+
+
+class ProbalityTreePath(object):
+
+    def __init__(self, population, probality, allele_mother, allele_father)
+        self.probality = probality
+        self.allele_mother = allele_mother
+        self.allele_father = allele_father
+
+    def hasfeature(self):
+        return "F" in self.path
+
+
+def add_tree_paths(paths, allele_mother, allele_father, probability):
+    switch 
 
 # we assume that all organisms are hermaphrodites
 
@@ -54,3 +90,44 @@ print('k = %d, m = %d, n = %d' % (opts.k, opts.m, opts.n))
 # Pr{Y == heteroy
 
 # Pr{1st organim
+
+def main():
+    parser = argparse.ArgumentParser(prog=basename(__file__), description='Fubar')
+    parser.add_argument('k', type=int)
+    parser.add_argument('m', type=int)
+    parser.add_argument('n', type=int)
+    parser.add_argument('--verbose', '-v')
+
+    opts = parser.parse_args()
+
+    # k organisms are homozygous for a factor (both chromosomes dominant)
+    # m organisms are heterozygous for a factor (chromosomes different)
+    # n oragnisms are homozygous recessize for a factor (both chromosomes recessive)
+
+    if opts.verbose:
+        print('k = %d, m = %d, n = %d' % (opts.k, opts.m, opts.n)) 
+
+
+    paths = []
+
+    population = Popuplation([opts.k, opts.m, opts.n])
+    for allele_mother in Allele.all():
+        probality_mother = population.probability(allele_mother)
+        subpopulation = population.take(allele_mother)
+
+        for allele_father in Allele.all():
+
+            probability_father = subpopulation.probability(allele_father)
+            probability = probality_mother * probability_father
+
+            add_tree_paths(path, allele_mother, probability_mother, allele_father, probability_father)
+
+    if opts.verbose:
+        for path in paths:
+            print("path %s 
+
+
+
+if __name__ == '__main__':
+    main()
+
