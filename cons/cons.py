@@ -49,7 +49,7 @@ def main():
         row_num = DNA.letter2pos(letter)
         row = profile[row_num]
         rowstr = ' '.join([str(n) for n in row])
-        print('%s: %s' % (letter, rowstr))
+        print('%s: %s ' % (letter, rowstr))
 
 if __name__ == '__main__':
     main()
