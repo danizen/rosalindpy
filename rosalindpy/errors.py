@@ -1,9 +1,9 @@
-class DnaSequenceError(Exception):
+class DNASequenceError(Exception):
     '''Not a valid DNA sequence'''
     pass
 
 
-class RnaSequenceError(Exception):
+class RNASequenceError(Exception):
     '''Not a valid RNA sequence'''
     pass
 

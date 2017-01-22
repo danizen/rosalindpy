@@ -20,7 +20,7 @@ def test_validate_dna_array_ok():
 
 def test_validate_dna_error():
     sequences = [ 'ATCCAGCT', 'TTGGAACQ' ]
-    with pytest.raises(DnaSequenceError):
+    with pytest.raises(DNASequenceError):
         utils.validate_dna( sequences )
 
 
