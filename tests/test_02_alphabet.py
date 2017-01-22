@@ -27,3 +27,11 @@ def test_dna_pos2letter():
     assert DNA.pos2letter(2) == 'G'
     assert DNA.pos2letter(3) == 'T'
 
+def test_dna_len():
+    assert len(DNA) == 4
+
+def test_rna_isvalid():
+    assert RNA.isvalid('AUCCAGCU')
+
+def test_rna_isvalid_notstrictk():
+    assert RNA.isvalid('AUCC-AGCU', strict=False)

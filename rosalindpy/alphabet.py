@@ -14,6 +14,9 @@ class RestrictedAlphabet(object):
     def letter2pos(self, letter):
         return self.alphabet.index(letter)
 
+    def __len__(self):
+        return len(self.alphabet)
+
     def isvalid(self, string_in_alphabet, strict=False):
         for a in string_in_alphabet:
             if a not in self.alphabet:
