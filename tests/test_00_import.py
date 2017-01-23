@@ -33,3 +33,9 @@ def test_import_translate():
     assert 'RNA_CODON2AA_MAP' in dir(mod)
     assert 'dna2protein' in dir(mod)
     assert 'rna2protein' in dir(mod)
+
+
+def test_import_population():
+    mod = import_module('rosalindpy.population')
+    assert 'Genotype' in dir(mod)
+

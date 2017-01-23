@@ -2,19 +2,7 @@ import argparse
 import numpy as np
 from os.path import basename, dirname, join
 import io
-
-class Allele(object):
-    HOMOZYGOUS = 0
-    HETEROZYGOUS = 1
-    HOMOZYGOUS_RECESSIVE = 2
-
-    @classmethod
-    def all(cls):
-        return [cls.HOMOZYGOUS, cls.HETEROZYGOUS, cls.HOMOZYGOUS_RECESSIVE]
-
-    @classmethod
-    def hasfeature(cls, allele_type):
-        return False if allele_type == cls.HOMOZYGOUS_RECESSIVE else True
+from rosalindpy.population import Genotype as Allele
 
 
 class Population(object):
