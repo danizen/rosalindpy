@@ -9,6 +9,8 @@ from rosalindpy import fasta
 from rosalindpy import utils
 
 from Bio import SeqIO
+from Bio.Alphabet import IUPAC
+from Bio.SeqUtils import six_frame_translations
 
 logger = logging.getLogger(__name__)
 
@@ -27,8 +29,11 @@ def guts(datafile):
 
 
 def guts_biopython(datafile):
-    seqrec = SeqIO.read(datafile, 'fasta')
+    seqrec = SeqIO.read(datafile, 'fasta', alphabet=IUPAC.unambiguous_dna)
     seq = seqrec.seq
+    logger.info('sequence %s' % str(seq))
+
+    print(six_frame_translations(seq))
 
     nbp = len(seq)
 
@@ -43,7 +48,7 @@ def guts_biopython(datafile):
         pos = seq.find('ATG', pos+1)
 
     revseq = seq.reverse_complement()
-    logger.info('reverse sequence %s' % str(revseq))
+    logger.info('reverse complement %s' % str(revseq))
     pos = revseq.find('ATG')
     while (pos > 0):
         framlen = nbp - pos 
