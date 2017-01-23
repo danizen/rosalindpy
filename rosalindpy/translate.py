@@ -169,6 +169,15 @@ def dna2protein(sequence, pos=0):
 
 
 def open_reading_frames(sequence):
+    '''
+    The ORF problem text doesn't explain well what is mean't by 6 reading frames.
+    They mean that ATG/AUG and stop codons can occur at an offset of 0, 1, & 2 from 
+    the start, so that you read through the codons at these offsets.
+
+    And, you also do the same thing in the reverse complement.
+
+    Another strategy is to just search for 'ATG/AUG', but that may be subtly different
+    '''
 
     frames = {}
 
