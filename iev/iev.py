@@ -1,10 +1,12 @@
 import argparse
 from os.path import basename, dirname, join
 import io
+import numpy as np
 
 
 def guts(datafile):
-    return 'Doable, but tedious'
+    population_genotypes = np.loadtxt(datafile, dtype=np.int32)
+    return str(population_genotypes)
 
 
 def main():
