@@ -8,7 +8,7 @@ class RNASequenceError(Exception):
     pass
 
 
-class AminoAcidSequenceError(Exception):
+class ProteinSequenceError(Exception):
     '''Not a valid Amino Acid sequence'''
     pass
 

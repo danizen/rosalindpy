@@ -53,3 +53,5 @@ DNA = DNAAlphabet()
 
 RNA = RestrictedAlphabet('ACGU', meta='-')
 
+Protein = RestrictedAlphabet('ACDEFGHIKLMNPQRSTVWY', meta='-*')
+

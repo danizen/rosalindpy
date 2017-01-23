@@ -24,3 +24,8 @@ def test_validate_dna_error():
         utils.validate_dna( sequences )
 
 
+def test_protein_mass():
+    sequence = 'SKADYEK'
+    result = '%.3f' % utils.protein_mass(sequence)
+    assert result == '821.392'
+

@@ -5,6 +5,7 @@ def test_import_errors():
     mod = import_module('rosalindpy.errors')
     assert 'DNASequenceError' in dir(mod)
     assert 'RNASequenceError' in dir(mod)
+    assert 'ProteinSequenceError' in dir(mod)
 
 
 def test_import_alphabet():
@@ -12,12 +13,14 @@ def test_import_alphabet():
     assert 'RestrictedAlphabet' in dir(mod)
     assert 'DNA' in dir(mod)
     assert 'RNA' in dir(mod)
+    assert 'Protein' in dir(mod)
 
 
 def test_import_utils():
     mod = import_module('rosalindpy.utils')
     assert 'validate_dna' in dir(mod)
     assert 'validate_rna' in dir(mod)
+    assert 'validate_protein' in dir(mod)
 
 
 def test_import_fasta():
