@@ -48,6 +48,7 @@ class DNAAlphabet(RestrictedAlphabet):
         return seqc.getvalue()
 
 
+
 DNA = DNAAlphabet()
 
 RNA = RestrictedAlphabet('ACGU', meta='-')

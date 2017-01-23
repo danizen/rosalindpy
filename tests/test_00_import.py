@@ -27,8 +27,9 @@ def test_import_fasta():
 
 def test_import_translate():
     mod = import_module('rosalindpy.translate')
-    assert 'START_CODON' in dir(mod)
+    assert 'DNA_START_CODON' in dir(mod)
     assert 'DNA_CODON2AA_MAP' in dir(mod)
+    assert 'RNA_START_CODON' in dir(mod)
     assert 'RNA_CODON2AA_MAP' in dir(mod)
     assert 'dna2protein' in dir(mod)
     assert 'rna2protein' in dir(mod)

@@ -1,6 +1,6 @@
 import argparse
 from os.path import basename, dirname, join
-from rosalindpy.prot import rna2protein
+from rosalindpy import translate
 
 
 def main():
@@ -13,7 +13,7 @@ def main():
     with open(opts.datafile, 'r') as f:
         sequence = f.read().strip()
 
-    protseq = rna2protein(sequence)
+    protseq = translate.rna2protein(sequence)[0]
     print(protseq)
 
 

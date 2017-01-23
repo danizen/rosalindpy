@@ -1,6 +1,6 @@
 import io
 
-START_CODON = 'AUG'
+RNA_START_CODON = 'AUG'
 
 RNA_CODON2AA_MAP = {
     'UUU': 'F',
@@ -68,6 +68,8 @@ RNA_CODON2AA_MAP = {
     'GGA': 'G',
     'GGG': 'G',
 }
+
+DNA_START_CODON = 'ATG'
 
 DNA_CODON2AA_MAP = {
     'TTT': 'F',
@@ -137,24 +139,26 @@ DNA_CODON2AA_MAP = {
 }
 
 
-def __codonmap2protein(sequence, codonmap):
+def __codonmap2protein(sequence, codonmap, pos = 0):
     protseq = io.StringIO()
 
     # scan the sequence in sections of three, 
-    for i in range(0, len(sequence), 3):
+    i = pos
+    while i + 3 < len(sequence):
         seq = sequence[i:i+3]
         codon = codonmap[seq]
         if codon is None:
             break
         protseq.write(codon)
+        i += 3
 
-    return protseq.getvalue()
+    return (protseq.getvalue(), i - pos)
 
 
 def rna2protein(sequence):
-    return __codonmap2protein(sequence, RNA_CODON2AA_MAP)
+    return __codonmap2protein(sequence, RNA_CODON2AA_MAP, 0)
 
 
 def dna2protein(sequence):
-    return __codonmap2protein(sequence, DNA_CODON2AA_MAP)
+    return __codonmap2protein(sequence, DNA_CODON2AA_MAP, 0)
 
