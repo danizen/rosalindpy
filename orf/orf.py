@@ -70,13 +70,18 @@ def main():
         frames = guts_biopython(opts.datafile)
     else:
         frames = guts(opts.datafile)
+
     if opts.verbose:
-        for k, v in frames.items():
+        for k in sorted(frames.keys()):
+            v = frames[k]
             print('at %d: %s' % (k, v))
     else:
-        uniqframes = set(frames.values())
-        for f in uniqframes:
-            print(f)
+        uniqframes = set()
+        for k in sorted(frames.keys()):
+            v = frames[k]
+            if v not in uniqframes:
+                uniqframes.add(v)
+                print(v)
 
 if __name__ == '__main__':
     main()
