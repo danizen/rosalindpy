@@ -10,6 +10,8 @@ from rosalindpy import utils
 
 from Bio import SeqIO
 
+logger = logging.getLogger(__name__)
+
 
 def guts(datafile):
     sequences = fasta.readsimple(datafile)
@@ -41,6 +43,7 @@ def guts_biopython(datafile):
         pos = seq.find('ATG', pos+1)
 
     revseq = seq.reverse_complement()
+    logger.info('reverse sequence %s' % str(revseq))
     pos = revseq.find('ATG')
     while (pos > 0):
         framlen = nbp - pos 
