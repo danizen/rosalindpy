@@ -30,6 +30,10 @@ def test_dna_pos2letter():
 def test_dna_len():
     assert len(DNA) == 4
 
+def test_dna_reverse_complement():
+    seqc = DNA.reverse_complement('AAAACCCGGT')
+    assert seqc == 'ACCGGGTTTT'
+
 def test_rna_isvalid():
     assert RNA.isvalid('AUCCAGCU')
 

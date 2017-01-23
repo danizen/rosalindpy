@@ -1,4 +1,5 @@
 import string
+import io
 
 
 class RestrictedAlphabet(object):
@@ -27,7 +28,27 @@ class RestrictedAlphabet(object):
         return True
 
 
-DNA = RestrictedAlphabet('ACGT', meta='-')
+class DNAAlphabet(RestrictedAlphabet):
+
+    __complement_map = { 
+        'A': 'T',
+        'C': 'G',
+        'G': 'C',
+        'T': 'A' 
+    }
+
+    def __init__(self):
+        super().__init__('ACGT', meta='-')
+
+    def reverse_complement(self, sequence):
+        seqc = io.StringIO()
+        for c in sequence[::-1]:
+            if c in self.__complement_map:
+                seqc.write(self.__complement_map[c])
+        return seqc.getvalue()
+
+
+DNA = DNAAlphabet()
 
 RNA = RestrictedAlphabet('ACGU', meta='-')
 
