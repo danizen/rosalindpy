@@ -6,3 +6,6 @@ ipython
 pytest
 coverage
 
+# Biopython is used only as a diagnostic tool - when we have trouble, we use biopython to check our work.
+biopython
+
