@@ -17,9 +17,15 @@ def test_dna2protein():
 def test_dna_orfs():
     dnaseq = 'AGCCATGTAGCTAACTCAGGTTACATGGGGATGACCCCGCGACTTGGATTAGAGTCTCTTTTGGAATAAGCCTGAATGATCCGAGTAGCATCTCAG'
     frames = open_reading_frames(dnaseq)
-    assert len(frames) == 4
-    assert 'M' in frames
-    assert 'MLLGSFRLIPKETLIQVAGSSPCNLS' in frames
-    assert 'MGMTPRLGLESLLE' in frames
-    assert 'MTPRLGLESLLE' in frames
+    assert len(frames) == 5
+    assert 4 in frames
+    assert frames[4] == 'M'
+    assert -5 in frames
+    assert frames[-5] == 'MLLGSFRLIPKETLIQVAGSSPCNLS'
+    assert -70 in frames
+    assert frames[-70] == 'M'
+    assert 24 in frames
+    assert frames[24] == 'MGMTPRLGLESLLE'
+    assert 30 in frames
+    assert frames[30] == 'MTPRLGLESLLE'
 

@@ -170,7 +170,7 @@ def dna2protein(sequence, pos=0):
 
 def open_reading_frames(sequence):
 
-    frames = []
+    frames = {}
 
     pos = 0
     while pos < len(sequence):
@@ -182,8 +182,7 @@ def open_reading_frames(sequence):
         if protein_seq is None:
             break
         logger.info('starting at %d, protein %s' % (pos, protein_seq))
-        if not protein_seq in frames:
-            frames.append(protein_seq)
+        frames[pos] = protein_seq
         pos += 3
 
     seqc = DNA.reverse_complement(sequence)
@@ -199,8 +198,7 @@ def open_reading_frames(sequence):
         if protein_seq is None:
             break
         logger.info('starting at %d, protein %s' % (pos, protein_seq))
-        if not protein_seq in frames:
-            frames.append(protein_seq)
+        frames[-1 * pos] = protein_seq
         pos += 3
 
     return frames

@@ -33,9 +33,13 @@ def main():
         logging.basicConfig(level=opts.verbose)
 
     frames = guts(opts.datafile)
-
-    for f in frames:
-        print(f)
+    if opts.verbose:
+        for k, v in frames.items():
+            print('at %d: %s' % (k, v))
+    else:
+        uniqframes = set(frames.values())
+        for f in uniqframes:
+            print(f)
 
 if __name__ == '__main__':
     main()
