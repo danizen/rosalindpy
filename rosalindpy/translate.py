@@ -1,4 +1,5 @@
 import io
+from .alphabet import DNA
 
 RNA_START_CODON = 'AUG'
 
@@ -143,15 +144,15 @@ def __codonmap2protein(sequence, pos, codonmap):
     protseq = io.StringIO()
 
     # scan the sequence in sections of three, 
-    while pos + 3 < len(sequence):
+    while pos + 3 <= len(sequence):
         seq = sequence[pos:pos+3]
         aa = codonmap[seq]
         if aa is None:
-            break
+            return protseq.getvalue()
         protseq.write(aa)
         pos += 3
 
-    return protseq.getvalue()
+    return None
 
 
 def rna2protein(sequence, pos=0):
@@ -162,25 +163,34 @@ def dna2protein(sequence, pos=0):
     return __codonmap2protein(sequence, pos, DNA_CODON2AA_MAP)
 
 
-def open_reading_frame(sequence):
+def open_reading_frames(sequence):
 
     frames = []
 
     pos = 0
     while pos < len(sequence):
         pos = sequence.find(DNA_START_CODON, pos)
+        if pos < 0:
+            break
         protein_seq = dna2protein(sequence, pos)
-        frames.append(protein_seq)
-        pos += len(protein_seq)*3
-
+        if protein_seq is None:
+            break
+        if not protein_seq in frames:
+            frames.append(protein_seq)
+        pos += 3
 
     seqc = DNA.reverse_complement(sequence)
     pos = 0
     while pos < len(seqc):
-        pos = segc.find(DNA_START_CODON, pos)
-        protein_seq = dna2protein(sequence, pos)
-        frames.append(protein_seq)
-        pos += len(protein_seq)*3
+        pos = seqc.find(DNA_START_CODON, pos)
+        if pos < 0:
+            break
+        protein_seq = dna2protein(seqc, pos)
+        if protein_seq is None:
+            break
+        if not protein_seq in frames:
+            frames.append(protein_seq)
+        pos += 3
 
     return frames
 
