@@ -1,0 +1,32 @@
+GC_Frame: a:25 t:25 g:25 c:21 
+Sequence: agccatgtag ... agcatctcag, 96 nt, 47.92 %GC
+
+
+1/1
+  P  C  S  *  L  R  L  H  G  D  D  P  A  T  W  I  R  V  S  F
+ A  M  *  L  T  Q  V  T  W  G  *  P  R  D  L  D  *  S  L  F
+S  H  V  A  N  S  G  Y  M  G  M  T  P  R  L  G  L  E  S  L
+agccatgtagctaactcaggttacatggggatgaccccgcgacttggattagagtctctt   50 %
+tcggtacatcgattgagtccaatgtacccctactggggcgctgaacctaatctcagagaa
+W  T  A  L  E  P  *  M  P  I  V  G  R  S  P  N  S  D  R  K 
+ A  M  Y  S  V  *  T  V  H  P  H  G  R  S  K  S  *  L  R  K
+  G  H  L  *  S  L  N  C  P  S  S  G  A  V  Q  I  L  T  E  K
+
+61/21
+  G  I  S  L  N  D  P  S  S  I  S
+ W  N  K  P  E  *  S  E  *  H  L
+L  E  *  A  *  M  I  R  V  A  S  Q
+ttggaataagcctgaatgatccgagtagcatctcag   44 %
+aaccttattcggacttactaggctcatcgtagagtc
+S  Y  A  Q  I  I  R  T  A  D  * 
+ Q  F  L  G  S  H  D  S  Y  C  R  L
+  P  I  L  R  F  S  G  L  L  M  E
+
+
+at -90: 
+at -70: 
+at -5: MLLGSFRLIPKETLIQVAGSSPCNLS
+at 4: M
+at 24: MGMTPRLGLESLLE
+at 30: MTPRLGLESLLE
+at 75: 
