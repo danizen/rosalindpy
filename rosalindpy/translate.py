@@ -1,5 +1,8 @@
 import io
 from .alphabet import DNA
+import logging
+
+logger = logging.getLogger(__name__)
 
 RNA_START_CODON = 'AUG'
 
@@ -148,10 +151,12 @@ def __codonmap2protein(sequence, pos, codonmap):
         seq = sequence[pos:pos+3]
         aa = codonmap[seq]
         if aa is None:
+            logger.info('stop codon at %d' % pos)
             return protseq.getvalue()
         protseq.write(aa)
         pos += 3
 
+    logger.info('protein terminated without stop codon')
     return None
 
 
@@ -172,22 +177,28 @@ def open_reading_frames(sequence):
         pos = sequence.find(DNA_START_CODON, pos)
         if pos < 0:
             break
+        logger.info('found start codon in sequence at %d' % pos)
         protein_seq = dna2protein(sequence, pos)
         if protein_seq is None:
             break
+        logger.info('starting at %d, protein %s' % (pos, protein_seq))
         if not protein_seq in frames:
             frames.append(protein_seq)
         pos += 3
 
     seqc = DNA.reverse_complement(sequence)
+    logger.info('reverse complement %s' % seqc)
+
     pos = 0
     while pos < len(seqc):
         pos = seqc.find(DNA_START_CODON, pos)
         if pos < 0:
             break
+        logger.info('found start codon in reverse complement at %d' % pos)
         protein_seq = dna2protein(seqc, pos)
         if protein_seq is None:
             break
+        logger.info('starting at %d, protein %s' % (pos, protein_seq))
         if not protein_seq in frames:
             frames.append(protein_seq)
         pos += 3
