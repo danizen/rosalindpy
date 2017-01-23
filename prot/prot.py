@@ -13,7 +13,7 @@ def main():
     with open(opts.datafile, 'r') as f:
         sequence = f.read().strip()
 
-    protseq = translate.rna2protein(sequence)[0]
+    protseq = translate.rna2protein(sequence)
     print(protseq)
 
 
