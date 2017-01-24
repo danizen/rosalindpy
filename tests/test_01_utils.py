@@ -29,3 +29,13 @@ def test_protein_mass():
     result = '%.3f' % utils.protein_mass(sequence)
     assert result == '821.392'
 
+
+def test_basic_motif():
+    motif = utils.Motif('N{P}[ST]{P}')
+    s = 'PPPPNNTTGGGG'
+    assert motif.matches(s)
+    locs = [l for l in motif.locations(s)]
+    assert len(locs) == 2
+    assert locs[0] == (4,8)
+    assert locs[1] == (5,9)
+

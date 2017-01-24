@@ -1,4 +1,5 @@
 import re
+import io
 from .errors import *
 
 
@@ -20,4 +21,15 @@ def readsimple(datafile):
                 sequences[lastseq] += sequence
 
     return sequences
+
+
+def parse(data):
+    seqid = None
+    lines = [l.strip() for l in data.split('\n')]
+
+    if len(lines) > 0 and lines[0].startswith('>'):
+        seqid = lines[0].strip()
+        lines = lines[1:]
+
+    return (''.join(lines), seqid)
 

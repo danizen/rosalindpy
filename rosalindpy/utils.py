@@ -27,6 +27,37 @@ MONOISOTOPIC_MASS_MAP = {
 }
 
 
+class Motif(object):
+
+    @staticmethod
+    def compile(pattern):
+        rexpr = r''
+        for c in pattern:
+            if c == '{':
+                rexpr += r'[^'
+            elif c == '}':
+                rexpr += r']'
+            else:
+                rexpr += c
+        return re.compile(rexpr)
+        
+    def __init__(self, pattern):
+        self.pattern = pattern
+        self.__expr = Motif.compile(pattern)
+
+    def __repr__(self):
+        return "Motif('%s')" % self.pattern
+
+    def matches(self, sequence):
+        return self.__expr.search(sequence)
+
+    def locations(self, sequence):
+        m = self.__expr.search(sequence)
+        while m is not None:
+            yield (m.start(), m.end())
+            m = self.__expr.search(sequence, m.start()+1)
+
+
 def __validate_sequences(theinput, thealphabet, theexception):
     if isinstance(theinput, str):
         if not thealphabet.isvalid(theinput):
