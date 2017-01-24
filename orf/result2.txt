@@ -1,32 +1,26 @@
-GC_Frame: a:25 t:25 g:25 c:21 
-Sequence: agccatgtag ... agcatctcag, 96 nt, 47.92 %GC
-
-
-1/1
-  P  C  S  *  L  R  L  H  G  D  D  P  A  T  W  I  R  V  S  F
- A  M  *  L  T  Q  V  T  W  G  *  P  R  D  L  D  *  S  L  F
-S  H  V  A  N  S  G  Y  M  G  M  T  P  R  L  G  L  E  S  L
-agccatgtagctaactcaggttacatggggatgaccccgcgacttggattagagtctctt   50 %
-tcggtacatcgattgagtccaatgtacccctactggggcgctgaacctaatctcagagaa
-W  T  A  L  E  P  *  M  P  I  V  G  R  S  P  N  S  D  R  K 
- A  M  Y  S  V  *  T  V  H  P  H  G  R  S  K  S  *  L  R  K
-  G  H  L  *  S  L  N  C  P  S  S  G  A  V  Q  I  L  T  E  K
-
-61/21
-  G  I  S  L  N  D  P  S  S  I  S
- W  N  K  P  E  *  S  E  *  H  L
-L  E  *  A  *  M  I  R  V  A  S  Q
-ttggaataagcctgaatgatccgagtagcatctcag   44 %
-aaccttattcggacttactaggctcatcgtagagtc
-S  Y  A  Q  I  I  R  T  A  D  * 
- Q  F  L  G  S  H  D  S  Y  C  R  L
-  P  I  L  R  F  S  G  L  L  M  E
-
-
-at -90: 
-at -70: 
-at -5: MLLGSFRLIPKETLIQVAGSSPCNLS
-at 4: M
-at 24: MGMTPRLGLESLLE
-at 30: MTPRLGLESLLE
-at 75: 
+at -730: 
+at -647: 
+at -541: 
+at -487: 
+at -464: 
+at -424: MICV
+at -375: MQINGSKTVQKSVRTFYDLRVTVATVTRKSWVEGSRAHEGRQQS
+at -345: MIDT
+at -318: MHRSGPSV
+at -302: MSRQ
+at -241: MFA
+at -56: MP
+at 19: MKDVISYRYRCQYAGKLGETIILEP
+at 48: MSVCREARRDYNSGTLVLSKSTTLLLPSAWKIA
+at 56: MQGS
+at 189: M
+at 401: MRSTTFNP
+at 424: MICV
+at 553: 
+at 570: 
+at 586: 
+at 639: 
+at 708: 
+at 714: 
+at 827: 
+at 867: 
