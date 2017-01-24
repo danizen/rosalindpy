@@ -19,7 +19,14 @@ def guts(sequences):
     #    - As you traverse each subsequent sequence, you can remove any sequence which doesn't match between
     #      the two.
     #    - Take a longest node that has no kids (is a leaf)
+
+    # The hope that this would be O(n) on characters is fleeting.
+    # we have to be able to color the nodes.  
+
+    # Maybe we swap graphs. We always build a new graph, copying from the old graph.
+    # Anything we cannot copy, we drop after the next sequence.
     return 'NYI'
+
 
 
 def main():
