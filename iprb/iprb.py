@@ -113,7 +113,7 @@ def main():
     opts = parser.parse_args()
 
     chance_has_feature = guts(opts.k, opts.m, opts.n, opts.verbose)
-    print("%lf" % chance_has_feature)
+    print("%.5lf" % chance_has_feature)
 
 
 if __name__ == '__main__':
